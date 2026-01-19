@@ -1,96 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Products - 3STAR Carry Bags</title>
+  <meta charset="UTF-8">
+  <title>Products | 3STAR Carry Bags</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
+      background: #f4f6f8;
     }
-    
-.back-home {
-  display: inline-block;
-  margin: 20px auto;
-  padding: 10px 18px;
-  background: green;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: bold;
-}
 
-.back-home:hover {
-  background: #084ec1;
-}
-/* Product card premium style */
-.product-card {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.12);
-  padding: 12px;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.product-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.18);
-}
-
-/* Product image */
-.product-card img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-/* Product name */
-.product-card h3 {
-  margin: 10px 0 6px;
-}
-
-/* WhatsApp button */
-.product-card a {
-  display: inline-block;
-  margin-top: 8px;
-  padding: 8px 14px;
-  background: #25D366;
-  color: white;
-  text-decoration: none;
-  border-radius: 20px;
-  font-size: 14px;
-}
-
+    /* Header */
     header {
-      background: gold;
+      background: #0a7cff;
       color: white;
-      padding: 15px;
       text-align: center;
+      padding: 20px;
     }
 
+    /* Product grid */
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 15px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
       padding: 20px;
-      text-align: center;
     }
 
-    .product-grid img {
+    /* Product card */
+    .product-card {
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .product-card img {
       width: 100%;
       border-radius: 10px;
     }
 
-    .product-grid p {
-      font-weight: bold;
-      margin-top: 8px;
+    .product-card h3 {
+      margin: 10px 0 5px;
     }
 
-    a {
-      text-decoration: none;
-      color: #0a7cff;
+    /* Price tag */
+    .price {
+      color: #e63946;
+      font-size: 18px;
       font-weight: bold;
+      margin: 6px 0;
+    }
+
+    /* Details */
+    .details {
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* WhatsApp button */
+    .whatsapp-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 16px;
+      background: #25D366;
+      color: white;
+      text-decoration: none;
+      border-radius: 20px;
+      font-weight: bold;
+    }
+
+    /* Back button */
+    .back-home {
+      display: inline-block;
+      margin: 25px auto;
+      padding: 12px 22px;
+      background: #0a7cff;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+    }
+
+    .back-wrap {
+      text-align: center;
+      padding-bottom: 30px;
     }
   </style>
 </head>
@@ -99,31 +100,46 @@
 
 <header>
   <h1>Our Products</h1>
-  <p>Eco Friendly • Reusable • Premium Quality</p>
+  <p>Premium • Eco Friendly • Reusable</p>
 </header>
-  
+
 <div class="product-grid">
-  <div>
+
+  <div class="product-card">
     <img src="bag1.jpg" alt="Shopping Bag">
-    <p>Shopping Bag</p>
+    <h3>Shopping Bag</h3>
+    <div class="price">₹25 / piece</div>
+    <div class="details">Minimum Order: 500 pcs</div>
+    <a class="whatsapp-btn" href="https://wa.me/918807841189">
+      Enquire on WhatsApp
+    </a>
   </div>
-  <div>
+
+  <div class="product-card">
     <img src="bag2.jpg" alt="Marriage Bag">
-    <p>Marriage Bag</p>
+    <h3>Marriage Bag</h3>
+    <div class="price">₹40 / piece</div>
+    <div class="details">Premium Stitch • Custom Print</div>
+    <a class="whatsapp-btn" href="https://wa.me/918807841189">
+      Enquire on WhatsApp
+    </a>
   </div>
-  <div>
+
+  <div class="product-card">
     <img src="bag3.jpg" alt="Return Gift Bag">
-    <p>Return Gift Bag</p>
+    <h3>Return Gift Bag</h3>
+    <div class="price">₹30 / piece</div>
+    <div class="details">Eco Friendly • Reusable</div>
+    <a class="whatsapp-btn" href="https://wa.me/918807841189">
+      Enquire on WhatsApp
+    </a>
   </div>
-  <div>
-    <img src="bag4.jpg" alt="Customized Bag">
-    <p>Customized Bag</p>
-  </div>
+
 </div>
 
-<p style="text-align:center;">
-  <a href="index.html">⬅ Back to Home</a>
-</p>
+<div class="back-wrap">
+  <a href="index.html" class="back-home">⬅ Back to Home</a>
+</div>
 
 </body>
 </html>
