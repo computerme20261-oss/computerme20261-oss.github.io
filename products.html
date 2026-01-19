@@ -58,6 +58,42 @@
     }
   </style>
 </head>
+/* Product card premium style */
+.product-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+  padding: 12px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+}
+
+/* Product image */
+.product-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* Product name */
+.product-card h3 {
+  margin: 10px 0 6px;
+}
+
+/* WhatsApp button */
+.product-card a {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 8px 14px;
+  background: #25D366;
+  color: white;
+  text-decoration: none;
+  border-radius: 20px;
+  font-size: 14px;
+}
 
 <body>
 
@@ -65,7 +101,7 @@
   <h1>Our Products</h1>
   <p>Eco Friendly • Reusable • Premium Quality</p>
 </header>
-
+  
 <div class="product-grid">
   <div>
     <img src="bag1.jpg" alt="Shopping Bag">
