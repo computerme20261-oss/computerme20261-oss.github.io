@@ -6,95 +6,111 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body{
+/* BASIC RESET */
+*{
   margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+/* BODY */
+body{
   font-family: Arial, Helvetica, sans-serif;
   background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
   color:#fff;
 }
 
-/* Header */
+/* HEADER */
 header{
-  padding:20px;
   text-align:center;
+  padding:25px 15px;
 }
+
 header h1{
-  margin:0;
-  font-size:28px;
+  font-size:30px;
+  margin-bottom:6px;
   letter-spacing:1px;
 }
 
-/* Section */
+header p{
+  opacity:0.9;
+}
+
+/* GRID SECTION */
 .section{
   padding:20px;
 }
 
-/* Cards */
 .grid{
   display:grid;
-  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
   gap:20px;
 }
 
+/* CARD */
 .card{
   background: rgba(255,255,255,0.12);
   backdrop-filter: blur(10px);
   border-radius:16px;
   overflow:hidden;
-  box-shadow:0 10px 25px rgba(0,0,0,0.3);
-  animation: fadeUp 0.8s ease;
+  box-shadow:0 10px 25px rgba(0,0,0,0.35);
+  animation: fadeUp 0.9s ease;
 }
 
+/* IMAGE FIX – IMPORTANT */
 .card img{
   width:100%;
-  height:180px;
+  height:200px;
   object-fit:cover;
+  display:block;
 }
 
+/* CARD CONTENT */
 .card h3{
-  padding:10px;
-  margin:0;
+  padding:12px 12px 5px;
   color:#ffd700;
 }
 
 .card p{
-  padding:0 10px 15px;
+  padding:0 12px 15px;
   font-size:14px;
   line-height:1.5;
+  color:#f1f1f1;
 }
 
-/* Info Box */
+/* INFO BOX */
 .info{
-  background: linear-gradient(135deg,#ffffff,#e8ecff);
+  background: linear-gradient(135deg,#ffffff,#e9edff);
   color:#333;
-  border-radius:16px;
-  padding:20px;
-  margin:20px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.25);
-  animation: fadeUp 1s ease;
+  margin:25px 20px;
+  padding:22px;
+  border-radius:18px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+  animation: fadeUp 1.2s ease;
 }
 
 .info h2{
+  margin-bottom:10px;
   color:#0a7cff;
-  margin-top:0;
 }
 
-/* Buttons */
+/* BUTTONS */
 .actions{
   text-align:center;
-  margin:30px 0;
+  padding:20px;
 }
 
 .actions a{
-  text-decoration:none;
   display:inline-block;
   margin:10px;
-  padding:14px 22px;
+  padding:14px 24px;
   border-radius:30px;
+  text-decoration:none;
   font-weight:bold;
   transition:0.3s;
 }
 
+/* BUTTON COLORS */
 .whatsapp{
   background:#25d366;
   color:#fff;
@@ -110,22 +126,16 @@ header h1{
   color:#000;
 }
 
+/* BUTTON HOVER */
 .actions a:hover{
-  transform:scale(1.05);
-}
-.card img{
-  width:100%;
-  height:180px;
-  object-fit:cover;
-  display:block;
-  background:#ddd;
+  transform:scale(1.08);
 }
 
-/* Animation */
+/* ANIMATION */
 @keyframes fadeUp{
   from{
     opacity:0;
-    transform:translateY(20px);
+    transform:translateY(25px);
   }
   to{
     opacity:1;
@@ -133,12 +143,12 @@ header h1{
   }
 }
 
-/* Footer */
+/* FOOTER */
 footer{
   text-align:center;
   padding:15px;
   font-size:13px;
-  opacity:0.8;
+  opacity:0.85;
 }
 </style>
 </head>
@@ -154,41 +164,30 @@ footer{
   <div class="grid">
 
     <div class="card">
-      <img src="https://via.placeholder.com/400x300.png?text=Custom+Size">
-      <img src="images/bags1.jpg">
+      <img src="images/bags1.jpg" alt="Custom Size Bags">
       <h3>Custom Size</h3>
       <p>
-        Choose the bag size according to your product needs.
-        Small, medium, or large – we manufacture as required.
+        Choose bag size based on your product.
+        Small, medium, and large sizes are available
+        as per your business requirement.
       </p>
     </div>
 
     <div class="card">
-      <img src="https://via.placeholder.com/400x300.png?text=Custom+Color">
-     <img src="images/bags2.jpg">
+      <img src="images/bags2.jpg" alt="Custom Color Bags">
       <h3>Custom Color</h3>
       <p>
-        Select colors that match your brand identity.
-        Multiple color options available.
+        Select attractive colors that match your brand.
+        Multiple color choices are available for bulk orders.
       </p>
     </div>
 
     <div class="card">
-      <img src="https://via.placeholder.com/400x300.png?text=Logo+Printing">
-    <img src="images/bags3.jpg">
+      <img src="images/bags3.jpg" alt="Logo Printing Bags">
       <h3>Logo Printing</h3>
       <p>
-        High-quality logo printing with premium finish
-        to enhance your brand visibility.
-      </p>
-    </div>
-
-    <div class="card">
-      <img src="https://via.placeholder.com/400x300?text=Event+Bags">
-      <h3>Event & Gift Bags</h3>
-      <p>
-        Ideal for weddings, return gifts, corporate events,
-        and promotional use.
+        Premium quality logo printing with clean finish
+        to improve brand visibility and trust.
       </p>
     </div>
 
@@ -198,11 +197,11 @@ footer{
 <div class="info">
   <h2>Flexible Pricing & GSM Options</h2>
   <p>
-    Prices vary based on order quantity and GSM (material thickness).
-    Higher quantity orders receive better pricing.
+    Pricing depends on order quantity and GSM (material thickness).
+    Higher quantity orders receive lower price per piece.
   </p>
   <p>
-    GSM can be customized to meet strength and budget requirements.
+    GSM can be customized based on strength, usage, and budget needs.
   </p>
 </div>
 
