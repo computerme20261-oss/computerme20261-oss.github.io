@@ -90,6 +90,22 @@ button:hover{
 }
 </style>
 </head>
+<style>
+.back-btn{
+  padding:12px 22px;
+  font-size:16px;
+  background:#111;
+  color:#fff;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  margin-top:15px;
+}
+.back-btn:hover{
+  background:#d4a017;
+  color:#000;
+}
+</style>
 
 <body>
 
@@ -217,6 +233,9 @@ function sendWhatsApp(){
   window.open("https://wa.me/918807841189?text=" + msg);
 }
 </script>
+<button onclick="goHome()" class="back-btn">
+⬅ Back to Home
+</button>
 
 </body>
 </html>
