@@ -10,7 +10,6 @@ body{
   margin:0;
   font-family:Arial, sans-serif;
   background:#f4f6f8;
-  color:#222;
 }
 
 header{
@@ -22,17 +21,17 @@ header{
 }
 
 .container{
-  padding:20px;
-  max-width:900px;
+  max-width:1000px;
   margin:auto;
+  padding:20px;
 }
 
 .section{
   background:#fff;
   padding:18px;
-  margin-bottom:18px;
+  margin-bottom:20px;
   border-radius:12px;
-  box-shadow:0 6px 18px rgba(0,0,0,0.1);
+  box-shadow:0 6px 16px rgba(0,0,0,0.1);
 }
 
 .section h3{
@@ -40,37 +39,39 @@ header{
   color:#ff5722;
 }
 
+/* PREVIEW */
+.preview-box{
+  display:flex;
+  justify-content:center;
+  margin-bottom:20px;
+}
+
+#bag{
+  width:200px;
+  height:260px;
+  background:#fff;
+  border:3px solid transparent;
+  border-radius:6px;
+  position:relative;
+  transition:all 0.4s ease;
+}
+
+#printText{
+  position:absolute;
+  bottom:45%;
+  width:100%;
+  text-align:center;
+  font-weight:bold;
+}
+
+/* INPUTS */
 input, select{
   width:100%;
   padding:10px;
   margin-top:8px;
-  margin-bottom:12px;
+  margin-bottom:14px;
   border-radius:8px;
   border:1px solid #ccc;
-  font-size:14px;
-}
-
-.options{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
-
-.options label{
-  background:#eee;
-  padding:8px 14px;
-  border-radius:20px;
-  cursor:pointer;
-  font-size:14px;
-}
-
-.options input{
-  display:none;
-}
-
-.options input:checked + span{
-  background:#ff5722;
-  color:#fff;
 }
 
 button{
@@ -84,38 +85,15 @@ button{
   font-weight:bold;
   cursor:pointer;
 }
-.preview-btn {
-  width: 100%;
-  padding: 10px;
-  background: #000;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  margin-top: 15px;
-  cursor: pointer;
-}
 
-button:hover{
-  opacity:0.9;
+button:hover{opacity:0.9;}
+
+.back-btn{
+  margin-top:10px;
+  background:#111;
 }
 </style>
 </head>
-<style>
-.back-btn{
-  padding:12px 22px;
-  font-size:16px;
-  background:#111;
-  color:#fff;
-  border:none;
-  border-radius:30px;
-  cursor:pointer;
-  margin-top:15px;
-}
-.back-btn:hover{
-  background:#d4a017;
-  color:#000;
-}
-</style>
 
 <body>
 
@@ -123,177 +101,149 @@ button:hover{
 
 <div class="container">
 
-<!-- CUSTOMER -->
+<!-- PREVIEW -->
 <div class="section">
-<h3>Customer Details</h3>
-<input id="name" placeholder="Customer Name *">
-<input id="mobile" placeholder="Mobile Number (Optional)">
-</div>
-
-<!-- MODEL -->
-<div class="section">
-<h3>Bag Model</h3>
-<div class="options">
-<label><input type="radio" name="model"><span>Shopping Bag</span></label>
-<label><input type="radio" name="model"><span>Stick Bag (Big Shopper)</span></label>
-<label><input type="radio" name="model"><span>Handle Bag</span></label>
+<h3>Live Bag Preview</h3>
+<div class="preview-box">
+  <div id="bag">
+    <span id="printText">YOUR BRAND</span>
+  </div>
 </div>
 </div>
 
 <!-- SIZE -->
 <div class="section">
-<h3>Bag Size (inches)</h3>
-<input id="size" placeholder="Length × Breadth (Example: 14 × 18)">
+<h3>Bag Size (L × B)</h3>
+<input id="length" placeholder="Length (inch)">
+<input id="breadth" placeholder="Breadth (inch)">
+<select id="sizeView" onchange="updateBag()">
+  <option value="small">Small View</option>
+  <option value="medium">Medium View</option>
+  <option value="large">Large View</option>
+</select>
 </div>
 
-<!-- MATERIAL & COLOR -->
+<!-- COLOR -->
 <div class="section">
-<h3>Material</h3>
-<select id="material">
-<option>Non-Woven</option>
-<option>Woven</option>
-<option>Eco-Friendly Fabric</option>
-</select>
-
 <h3>Bag Color</h3>
-<select id="color">
-<option>Red</option>
-<option>Blue</option>
-<option>Green</option>
-<option>Yellow</option>
-<option>White</option>
-<option>Black</option>
-<option>Light Shade</option>
-<option>Dark Shade</option>
-</select>
-</div>
-
-<!-- PRINTING -->
-<div class="section">
-<h3>Printing Details</h3>
-<select id="printContent">
-<option>Logo</option>
-<option>Brand Name</option>
-<option>Address</option>
-<option>Logo + Brand</option>
-<option>Logo + Brand + Address</option>
-</select>
-
-<select id="printType">
-<option>Single Side</option>
-<option>Double Side</option>
-</select>
-
-<select id="printColor">
-<option>Single Color</option>
-<option>Double Color</option>
-<option>Multi Color (Digital Printing)</option>
-</select>
-</div>
-
-<!-- GSM -->
-<div class="section">
-<h3>GSM</h3>
-<select id="gsm">
-<option>60</option><option>65</option><option>70</option>
-<option>75</option><option>80</option><option>85</option>
-<option>90</option><option>95</option><option>100</option>
-<option>105</option><option>110</option><option>115</option>
-<option>120</option>
-</select>
-</div>
-
-<!-- BORDER -->
-<div class="section">
-<h3>Border Option</h3>
-<select id="border">
-<option>No Border</option>
-<option>Full Border</option>
-<option>Half Border</option>
-</select>
-</div>
-
-<!-- QUANTITY -->
-<div class="section">
-<h3>Quantity (Pcs)</h3>
-<input id="qty" placeholder="*****">
-</div>
-
-<!-- SEND -->
-<button onclick="sendWhatsApp()">Send Customization Details</button>
-<button onclick="updateBag()" class="preview-btn">
-  Preview Bag
-</button>
-<!-- NEW OPTIONS -->
-<label>Border Color</label>
-<select id="borderColor">
-  <option value="black">Black</option>
+<select id="bagColor" onchange="updateBag()">
   <option value="white">White</option>
   <option value="red">Red</option>
   <option value="blue">Blue</option>
   <option value="green">Green</option>
   <option value="yellow">Yellow</option>
+  <option value="black">Black</option>
+</select>
+</div>
+
+<!-- PRINT -->
+<div class="section">
+<h3>Printing</h3>
+<select id="printContent">
+  <option>Brand Name</option>
+  <option>Logo</option>
+  <option>Brand + Address</option>
 </select>
 
-<label>Printing Side</label>
-<select id="printSide">
-  <option value="single">Single Side</option>
-  <option value="double">Double Side</option>
+<select id="printColor" onchange="updateBag()">
+  <option value="black">Black</option>
+  <option value="white">White</option>
+  <option value="red">Red</option>
+  <option value="blue">Blue</option>
+  <option value="green">Green</option>
+  <option value="multi">Multi Color</option>
+</select>
+</div>
+
+<!-- BORDER -->
+<div class="section">
+<h3>Border</h3>
+<select id="borderType" onchange="updateBag()">
+  <option value="none">No Border</option>
+  <option value="full">Full Border</option>
+  <option value="half">Half Border</option>
 </select>
 
-<label>Print Type</label>
-<select id="printType">
-  <option value="single">Single Color</option>
-  <option value="double">Double Color</option>
-  <option value="multi">Multi Color (Digital)</option>
+<select id="borderColor" onchange="updateBag()">
+  <option value="black">Black</option>
+  <option value="red">Red</option>
+  <option value="blue">Blue</option>
+  <option value="yellow">Yellow</option>
 </select>
+</div>
+
+<!-- GSM -->
+<div class="section">
+<h3>GSM (Bag shape will NOT change)</h3>
+<select id="gsm">
+  <option>60</option><option>70</option><option>80</option>
+  <option>90</option><option>100</option><option>110</option>
+  <option>120</option>
+</select>
+</div>
+
+<!-- CUSTOMER -->
+<div class="section">
+<h3>Customer Details</h3>
+<input id="name" placeholder="Customer Name">
+<input id="mobile" placeholder="Mobile (Optional)">
+<input id="qty" placeholder="Quantity (pcs)">
+<button onclick="sendWhatsApp()">Send Customization Details</button>
+<button class="back-btn" onclick="goHome()">⬅ Back to Home</button>
+</div>
 
 </div>
 
 <script>
-function sendWhatsApp(){
-  let msg =
-  "Customize Bag Request:%0A" +
-  "Name: " + name.value + "%0A" +
-  "Mobile: " + mobile.value + "%0A" +
-  "Size: " + size.value + "%0A" +
-  "Material: " + material.value + "%0A" +
-  "Color: " + color.value + "%0A" +
-  "Printing: " + printContent.value + "%0A" +
-  "Print Type: " + printType.value + "%0A" +
-  "Print Color: " + printColor.value + "%0A" +
-  "GSM: " + gsm.value + "%0A" +
-  "Border: " + border.value + "%0A" +
-  "Quantity: " + qty.value;
+function updateBag(){
+  const bag=document.getElementById("bag");
+  const size=document.getElementById("sizeView").value;
+  const bagColor=document.getElementById("bagColor").value;
+  const borderType=document.getElementById("borderType").value;
+  const borderColor=document.getElementById("borderColor").value;
+  const printColor=document.getElementById("printColor").value;
+  const text=document.getElementById("printText");
 
-  window.open("https://wa.me/918807841189?text=" + msg);
-}
-function updateBag() {
-  const bag = document.getElementById("bag");
+  bag.style.background=bagColor;
 
-  const bagColor = document.getElementById("bagColor").value;
-  const borderType = document.getElementById("borderType").value;
-  const borderColor = document.getElementById("borderColor").value;
-  const printColor = document.getElementById("printColor").value;
+  if(size==="small"){bag.style.width="160px";bag.style.height="220px";}
+  if(size==="medium"){bag.style.width="200px";bag.style.height="260px";}
+  if(size==="large"){bag.style.width="240px";bag.style.height="300px";}
 
-  bag.style.background = bagColor;
-
-  if (borderType !== "none") {
-    bag.style.border = "4px solid " + borderColor;
-  } else {
-    bag.style.border = "none";
+  if(borderType==="full"){
+    bag.style.border="4px solid "+borderColor;
+  }else if(borderType==="half"){
+    bag.style.borderBottom="4px solid "+borderColor;
+    bag.style.borderTop="none";
+    bag.style.borderLeft="none";
+    bag.style.borderRight="none";
+  }else{
+    bag.style.border="3px solid transparent";
   }
 
-  document.getElementById("printText").style.color = printColor;
+  if(printColor==="multi"){
+    text.style.background="linear-gradient(to right,red,blue,green)";
+    text.style.webkitBackgroundClip="text";
+    text.style.color="transparent";
+  }else{
+    text.style.background="none";
+    text.style.color=printColor;
+  }
 }
 
-</script>
-<button onclick="goHome()" class="back-btn">
-⬅ Back to Home
-</button>
-<script>
+function sendWhatsApp(){
+  let msg=
+  "Bag Customization%0A"+
+  "Name: "+name.value+"%0A"+
+  "Mobile: "+mobile.value+"%0A"+
+  "Size: "+length.value+"×"+breadth.value+"%0A"+
+  "GSM: "+gsm.value+"%0A"+
+  "Qty: "+qty.value;
+  window.open("https://wa.me/918807841189?text="+msg);
+}
+
 function goHome(){
-  window.location.href = "index.html";
+  window.location.href="index.html";
 }
 </script>
 
