@@ -122,18 +122,6 @@ button:hover{opacity:0.9;}
   <option value="large">Large View</option>
 </select>
 </div>
-<!-- BAG HANDLE TYPE -->
-<div class="section">
-  <h3>Bag Handle Type</h3>
-
-  <div class="options">
-    <label>
-      <input type="radio" name="handleType" value="Handle Bag" checked>
-      <span>Handle Bag</span>
-    </label>
-
-    <label>
-      <input type="radio" name
 
 <!-- COLOR -->
 <div class="section">
@@ -193,6 +181,27 @@ button:hover{opacity:0.9;}
   <option>120</option>
 </select>
 </div>
+<!-- HANDLE TYPE -->
+<div class="section">
+  <h3>Handle Type</h3>
+
+  <div class="options">
+    <label>
+      <input type="radio" name="handleType" value="Handle Bag" checked>
+      <span>Handle Bag</span>
+    </label>
+
+    <label>
+      <input type="radio" name="handleType" value="Stick Bag (Big Shopper)">
+      <span>Stick Bag (Big Shopper)</span>
+    </label>
+
+    <label>
+      <input type="radio" name="handleType" value="D-Cut Bag">
+      <span>D-Cut Bag</span>
+    </label>
+  </div>
+</div>
 
 <!-- CUSTOMER -->
 <div class="section">
@@ -242,17 +251,29 @@ function updateBag(){
     text.style.color=printColor;
   }
 }
+<script>
+function getHandleType() {
+  const types = document.getElementsByName("handleType");
+  for (let t of types) {
+    if (t.checked) return t.value;
+  }
+  return "";
+}
+</script>
 
 function sendWhatsApp(){
+ <script>
   let msg=
   "Bag Customization%0A"+
   "Name: "+name.value+"%0A"+
   "Mobile: "+mobile.value+"%0A"+
   "Size: "+length.value+"×"+breadth.value+"%0A"+
+  "Handle Type: " + getHandleType() + "%0A" +
   "GSM: "+gsm.value+"%0A"+
   "Qty: "+qty.value;
   window.open("https://wa.me/918807841189?text="+msg);
 }
+</script>
 
 function goHome(){
   window.location.href="index.html";
