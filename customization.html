@@ -1,301 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Customize Bag | 3 STAR</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-body{
-  margin:0;
-  font-family:Arial, sans-serif;
-  background:#f4f6f8;
-}
-
-header{
-  background:#111;
-  color:#fff;
-  padding:16px;
-  text-align:center;
-  font-size:22px;
-}
-
-.container{
-  max-width:1000px;
-  margin:auto;
-  padding:15px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:15px;
-}
-
-.section{
-  background:#fff;
-  padding:15px;
-  border-radius:12px;
-  box-shadow:0 6px 18px rgba(0,0,0,0.1);
-}
-
-.section h3{
-  margin-top:0;
-  color:#ff5722;
-}
-
-input, select{
-  width:100%;
-  padding:10px;
-  margin:6px 0 12px;
-  border-radius:8px;
-  border:1px solid #ccc;
-}
-
-button{
-  width:100%;
-  padding:14px;
-  border:none;
-  border-radius:30px;
-  background:linear-gradient(135deg,#ff9800,#ff5722);
-  color:#fff;
-  font-size:16px;
-  cursor:pointer;
-  font-weight:bold;
-}
-
-.preview-btn{
-  background:#000;
-  margin-top:10px;
-}
-
-.back-btn{
-  background:#111;
-  margin-top:10px;
-}
-
-/* ===== PREVIEW AREA ===== */
-.preview-box{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:420px;
-}
-
-.bag{
-  position:relative;
-  width:220px;
-  height:280px;
-  background:#e0e0e0;
-  border:4px solid transparent;
-  border-radius:6px;
-  transition:0.3s;
-}
-
-/* HANDLE */
-.handle-bar{
-  display:none;
-  position:absolute;
-  top:-25px;
-  left:50%;
-  transform:translateX(-50%);
-  width:120px;
-  height:25px;
-  border:4px solid #000;
-  border-bottom:none;
-  border-radius:50px 50px 0 0;
-}
-
-/* STICK */
-.bag.stick .handle-bar{
-  width:160px;
-}
-
-/* DCUT */
-.bag.dcut::before{
-  content:"";
-  position:absolute;
-  top:8px;
-  left:50%;
-  transform:translateX(-50%);
-  width:70px;
-  height:25px;
-  background:#f4f6f8;
-  border-radius:0 0 20px 20px;
-}
-
-/* BORDER */
-.border-half{
-  border-left:4px solid;
-  border-right:4px solid;
-}
-
-.border-full{
-  border-left:4px solid;
-  border-right:4px solid;
-  border-bottom:4px solid;
-}
-
-/* PRINT AREA */
-.print-area{
-  text-align:center;
-  margin-top:80px;
-  font-size:14px;
-}
-
-.print-black{ color:black; }
-.print-red{ color:red; }
-.print-blue{ color:blue; }
-.print-green{ color:green; }
-.print-yellow{ color:gold; }
-
-.logo{
-  font-weight:bold;
-  font-size:22px;
-}
-
-.address{
-  font-size:12px;
-  margin-top:6px;
-}
-</style>
+  <meta charset="UTF-8">
+  <title>Customize Carry Bag | 3 STAR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
 
-<header>Customize Your Carry Bag</header>
+<!-- HEADER -->
+<header>
+  <h1>Customize Your Carry Bag</h1>
+</header>
 
+<!-- MAIN CONTAINER -->
 <div class="container">
 
-<!-- LEFT FORM -->
-<div>
+  <!-- CUSTOMER DETAILS -->
+  <section>
+    <h3>Customer Details</h3>
+    <input type="text" id="customerName" placeholder="Customer Name">
+    <input type="text" id="customerMobile" placeholder="Mobile Number (Optional)">
+  </section>
 
-<div class="section">
-<h3>Customer</h3>
-<input id="customerName" placeholder="Customer Name">
-<input id="customerMobile" placeholder="Mobile Number">
+  <!-- BAG TYPE -->
+  <section>
+    <h3>Bag Type</h3>
+    <label>
+      <input type="radio" name="bagType" value="Handle Bag">
+      Handle Bag
+    </label>
+
+    <label>
+      <input type="radio" name="bagType" value="Stick Bag">
+      Stick Bag (Big Shopper)
+    </label>
+
+    <label>
+      <input type="radio" name="bagType" value="D-Cut Bag">
+      D-Cut Bag
+    </label>
+  </section>
+
+  <!-- BAG SIZE -->
+  <section>
+    <h3>Bag Size</h3>
+
+    <label>Preset Size</label>
+    <select id="presetSize">
+      <option value="">Select Size</option>
+      <option value="Small (10x12)">Small (10 × 12)</option>
+      <option value="Medium (14x18)">Medium (14 × 18)</option>
+      <option value="Big (18x24)">Big (18 × 24)</option>
+    </select>
+
+    <label>Custom Size (L × B in inches)</label>
+    <input type="number" id="bagLength" placeholder="Length">
+    <input type="number" id="bagBreadth" placeholder="Breadth">
+  </section>
+
+  <!-- MATERIAL -->
+  <section>
+    <h3>Material</h3>
+    <select id="material">
+      <option>Non-Woven</option>
+      <option>Woven</option>
+      <option>Eco Friendly</option>
+    </select>
+  </section>
+
+  <!-- BAG COLOR -->
+  <section>
+    <h3>Bag Color</h3>
+    <select id="bagColor">
+      <option>White</option>
+      <option>Black</option>
+      <option>Red</option>
+      <option>Blue</option>
+      <option>Green</option>
+      <option>Yellow</option>
+      <option>Light Shade</option>
+      <option>Dark Shade</option>
+    </select>
+  </section>
+
+  <!-- PRINTING DETAILS -->
+  <section>
+    <h3>Printing Details</h3>
+
+    <label>Print Content</label>
+    <select id="printContent">
+      <option>Logo Only</option>
+      <option>Logo + Address</option>
+      <option>Full Details (Logo + Shop + Address)</option>
+    </select>
+
+    <label>Printing Color</label>
+    <select id="printColor">
+      <option>Black</option>
+      <option>Red</option>
+      <option>Blue</option>
+      <option>Green</option>
+      <option>Yellow</option>
+      <option>Multi Color (Digital)</option>
+    </select>
+  </section>
+
+  <!-- GSM -->
+  <section>
+    <h3>GSM</h3>
+    <select id="gsm">
+      <option>60</option>
+      <option>65</option>
+      <option>70</option>
+      <option>75</option>
+      <option>80</option>
+      <option>85</option>
+      <option>90</option>
+      <option>95</option>
+      <option>100</option>
+      <option>105</option>
+      <option>110</option>
+      <option>115</option>
+      <option>120</option>
+    </select>
+  </section>
+
+  <!-- BORDER -->
+  <section>
+    <h3>Border</h3>
+
+    <label>Border Type</label>
+    <select id="borderType">
+      <option>No Border</option>
+      <option>Half Border</option>
+      <option>Full Border</option>
+    </select>
+
+    <label>Border Color</label>
+    <select id="borderColor">
+      <option>Black</option>
+      <option>White</option>
+      <option>Red</option>
+      <option>Blue</option>
+      <option>Green</option>
+      <option>Yellow</option>
+    </select>
+  </section>
+
+  <!-- QUANTITY -->
+  <section>
+    <h3>Quantity</h3>
+    <input type="number" id="quantity" placeholder="Enter quantity">
+  </section>
+
+  <!-- PREVIEW AREA -->
+  <section>
+    <h3>Bag Preview</h3>
+    <div id="bagPreview">
+      <!-- Bag shape will be generated here -->
+    </div>
+  </section>
+
+  <!-- BUTTONS -->
+  <section>
+    <button id="previewBtn">Preview Bag</button>
+    <button id="sendBtn">Send Details on WhatsApp</button>
+    <button id="backBtn">⬅ Back to Home</button>
+  </section>
+
 </div>
-
-<div class="section">
-<h3>Bag Type</h3>
-<select id="bagType">
-  <option value="handle">Handle Bag</option>
-  <option value="stick">Stick Bag (Big Shopper)</option>
-  <option value="dcut">D-Cut Bag</option>
-</select>
-
-<h3>Bag Size</h3>
-<select id="bagSize">
-  <option value="small">Small</option>
-  <option value="medium">Medium</option>
-  <option value="big">Big</option>
-</select>
-</div>
-
-<div class="section">
-<h3>Border</h3>
-<select id="borderType">
-  <option value="none">No Border</option>
-  <option value="half">Half Border</option>
-  <option value="full">Full Border</option>
-</select>
-
-<select id="borderColor">
-  <option value="black">Black</option>
-  <option value="red">Red</option>
-  <option value="blue">Blue</option>
-  <option value="green">Green</option>
-</select>
-</div>
-
-<div class="section">
-<h3>Printing</h3>
-<select id="printOption">
-  <option value="logo">Logo</option>
-  <option value="logoAddress">Logo + Address</option>
-  <option value="full">Logo + Full Details</option>
-</select>
-
-<select id="printColor">
-  <option value="black">Black</option>
-  <option value="red">Red</option>
-  <option value="blue">Blue</option>
-  <option value="green">Green</option>
-  <option value="yellow">Yellow</option>
-</select>
-</div>
-
-<button onclick="sendWhatsApp()">Send Customer Details</button>
-<button onclick="updateBag()" class="preview-btn">Preview Bag</button>
-<button onclick="backToHome()" class="back-btn">⬅ Back to Home</button>
-
-</div>
-
-<!-- RIGHT PREVIEW -->
-<div class="section preview-box">
-  <div id="bag" class="bag">
-    <div id="handle" class="handle-bar"></div>
-    <div id="printArea" class="print-area"></div>
-  </div>
-</div>
-
-</div>
-
-<script>
-function updateBag(){
-  const bag=document.getElementById("bag");
-  const handle=document.getElementById("handle");
-  const printArea=document.getElementById("printArea");
-
-  bag.className="bag";
-  handle.style.display="none";
-  printArea.innerHTML="";
-
-  let type=bagType.value;
-  let size=bagSize.value;
-  let border=borderType.value;
-  let bColor=borderColor.value;
-  let pOpt=printOption.value;
-  let pColor=printColor.value;
-
-  if(type==="handle"){ handle.style.display="block"; }
-  if(type==="stick"){ handle.style.display="block"; bag.classList.add("stick"); }
-  if(type==="dcut"){ bag.classList.add("dcut"); }
-
-  if(size==="small"){ bag.style.width="180px"; bag.style.height="230px"; }
-  if(size==="medium"){ bag.style.width="220px"; bag.style.height="280px"; }
-  if(size==="big"){ bag.style.width="260px"; bag.style.height="330px"; }
-
-  if(border==="half") bag.classList.add("border-half");
-  if(border==="full") bag.classList.add("border-full");
-  bag.style.borderColor=bColor;
-
-  printArea.className="print-area print-"+pColor;
-
-  if(pOpt==="logo"){
-    printArea.innerHTML="<div class='logo'>LOGO</div>";
-  }
-  if(pOpt==="logoAddress"){
-    printArea.innerHTML="<div class='logo'>LOGO</div><div class='address'>Your Address</div>";
-  }
-  if(pOpt==="full"){
-    printArea.innerHTML="<div class='logo'>LOGO</div><div class='address'>Shop Name<br>Address<br>Phone</div>";
-  }
-}
-
-function sendWhatsApp(){
-  let msg=`3 STAR Bag Order
-Name: ${customerName.value}
-Mobile: ${customerMobile.value}
-Bag: ${bagType.value}
-Size: ${bagSize.value}
-Border: ${borderType.value} (${borderColor.value})
-Print: ${printOption.value}
-Print Color: ${printColor.value}`;
-  window.open("https://wa.me/91XXXXXXXXXX?text="+encodeURIComponent(msg));
-}
-
-function backToHome(){
-  window.location.href="index.html";
-}
-</script>
 
 </body>
 </html>
