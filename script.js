@@ -20,6 +20,11 @@ function generateBag() {
   if (bagType === "Stick Bag") bag.classList.add("stick");
   if (bagType === "D-Cut Bag") bag.classList.add("dcut");
 
+   /* ===== GSM ===== */
+const gsmValue = document.getElementById("gsm").value;
+bag.setAttribute("data-gsm", gsmValue);
+const gsmValue = document.getElementById("gsm").value;
+
   /* ===== SIZE (L × B IN INCH MODEL) ===== */
 const L = Number(document.getElementById("bagLength").value) || 14; // Length = height
 const B = Number(document.getElementById("bagBreadth").value) || 12; // Breadth = width
@@ -93,6 +98,7 @@ function sendWhatsApp() {
     "Mobile: " + (customerMobile.value || "-") + "%0A" +
     "Bag Type: " + bagType + "%0A" +
     "Size: " + (bagLength.value || 14) + " x " + (bagBreadth.value || 18) + "%0A" +
+    "GSM: " + gsmValue + "%0A" +
     "Material: " + material.value + "%0A" +
     "Bag Color: " + bagColor.value + "%0A" +
     "Print: " + printContent.value + "%0A" +
