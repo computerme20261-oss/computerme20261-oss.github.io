@@ -1,18 +1,14 @@
-/* ================================
-   BAG PREVIEW
+/* ===============================
+   AUTO BAG PREVIEW
 ================================ */
-function previewBag() {
+
+function generateBag() {
   const area = document.getElementById("bagPreview");
   area.innerHTML = "";
 
-  // Check bag type selected
   const bagTypeInput = document.querySelector("input[name='bagType']:checked");
-  if (!bagTypeInput) {
-    alert("Please select Bag Type");
-    return;
-  }
+  if (!bagTypeInput) return;
 
-  /* CREATE BAG */
   const bag = document.createElement("div");
   bag.className = "bag";
 
@@ -46,42 +42,86 @@ function previewBag() {
 
   bag.style.borderColor = borderColor.toLowerCase();
 
-  /* PRINT TEXT */
-  const printText = document.createElement("div");
-  printText.className = "print";
+  /* PRINT CONTENT */
+  const print = document.createElement("div");
+  print.className = "print";
 
   const printContent = document.getElementById("printContent").value;
   const printColor = document.getElementById("printColor").value;
 
   if (printContent === "Logo Only") {
-    printText.innerText = "LOGO";
+    print.innerText = "LOGO";
   } else if (printContent === "Logo + Address") {
-    printText.innerText = "LOGO\nAddress";
+    print.innerText = "LOGO\nAddress";
   } else {
-    printText.innerText = "LOGO\nShop Name\nAddress";
+    print.innerText = "LOGO\nShop Name\nAddress";
   }
 
-  printText.style.color = printColor.toLowerCase();
+  print.style.color = printColor.toLowerCase();
 
-  /* ANIMATION */
-  bag.style.transform = "scale(0.8)";
+  /* SMOOTH EFFECT */
   bag.style.opacity = "0";
-
+  bag.style.transform = "scale(0.9)";
   setTimeout(() => {
-    bag.style.transition = "all 0.35s ease";
-    bag.style.transform = "scale(1)";
+    bag.style.transition = "all 0.3s ease";
     bag.style.opacity = "1";
+    bag.style.transform = "scale(1)";
   }, 50);
 
-  bag.appendChild(printText);
+  bag.appendChild(print);
   area.appendChild(bag);
 }
 
-/* ================================
-   WHATSAPP SEND
+/* ===============================
+   WHATSAPP SEND (PLAN FIRST)
 ================================ */
+
 function sendWhatsApp() {
-  const bagTypeInput = document.querySelector("input[name='bagType']:checked");
-  if (!bagTypeInput) {
-    alert("Please preview the bag first");
-    r
+  const bagType = document.querySelector("input[name='bagType']:checked")?.value || "";
+  if (!bagType) {
+    alert("Please select bag type");
+    return;
+  }
+
+  const msg =
+    "3 STAR BAG ORDER%0A" +
+    "------------------%0A" +
+    "Name: " + (customerName.value || "Customer") + "%0A" +
+    "Mobile: " + (customerMobile.value || "-") + "%0A" +
+    "Bag Type: " + bagType + "%0A" +
+    "Size: " + (bagLength.value || 14) + " x " + (bagBreadth.value || 18) + "%0A" +
+    "Material: " + material.value + "%0A" +
+    "Bag Color: " + bagColor.value + "%0A" +
+    "Print: " + printContent.value + "%0A" +
+    "Print Color: " + printColor.value + "%0A" +
+    "Border: " + borderType.value + "%0A" +
+    "Quantity: " + (quantity.value || "-");
+
+  window.open("https://wa.me/918807841189?text=" + msg, "_blank");
+}
+
+/* ===============================
+   BACK
+================================ */
+
+function goHome() {
+  window.location.href = "index.html";
+}
+
+/* ===============================
+   AUTO CHANGE LISTENERS
+================================ */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  document.querySelectorAll(
+    "input, select"
+  ).forEach(el => {
+    el.addEventListener("change", generateBag);
+    el.addEventListener("input", generateBag);
+  });
+
+  document.getElementById("sendBtn").addEventListener("click", sendWhatsApp);
+  document.getElementById("backBtn").addEventListener("click", goHome);
+
+});
