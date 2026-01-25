@@ -100,7 +100,6 @@ button{
   background:#eee;
   position:relative;
   transition:all 0.3s ease;
-  animation:pop 0.4s ease;
 }
 
 /* ===== ANIMATION ===== */
@@ -110,11 +109,11 @@ button{
 }
 
 /* ===== HANDLE BAG ===== */
-.handle-bag{
+.handle{
   border-radius:12px;
 }
 
-.handle-bag::before{
+.handle::before{
   content:"";
   position:absolute;
   top:-28px;
@@ -127,14 +126,14 @@ button{
 }
 
 /* ===== STICK BAG (BIG SHOPPER) ===== */
-.stick-bag{
+.stick{
   width:160px;
   height:260px;
   border-radius:10px;
 }
 
-.stick-bag::before,
-.stick-bag::after{
+.stick::before,
+.stick::after{
   content:"";
   position:absolute;
   top:-30px;
@@ -143,15 +142,15 @@ button{
   background:#333;
 }
 
-.stick-bag::before{ left:40px; }
-.stick-bag::after{ right:40px; }
+.stick::before{ left:40px; }
+.stick::after{ right:40px; }
 
 /* ===== D-CUT BAG ===== */
-.dcut-bag{
+.dcut{
   border-radius:12px 12px 6px 6px;
 }
 
-.dcut-bag::before{
+.dcut::before{
   content:"";
   position:absolute;
   top:8px;
@@ -164,27 +163,26 @@ button{
 }
 
 /* ===== BORDER RULES ===== */
-/* Full border = Left + Right + Bottom ONLY */
 .full-border{
   border-left:4px solid;
   border-right:4px solid;
   border-bottom:4px solid;
 }
 
-/* Half border = Left + Right ONLY */
 .half-border{
   border-left:4px solid;
   border-right:4px solid;
 }
 
 /* ===== PRINT TEXT ===== */
-.print-text{
+.print{
   position:absolute;
   bottom:20px;
   width:100%;
   text-align:center;
   font-weight:bold;
   font-size:13px;
+  white-space:pre-line;
 }
 
 /* ===== RESPONSIVE ===== */
@@ -193,4 +191,3 @@ button{
     transform:scale(0.9);
   }
 }
-
