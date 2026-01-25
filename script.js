@@ -1,128 +1,96 @@
-/* ===== GLOBAL ===== */
-let bag = document.getElementById("bag");
-let printArea = document.getElementById("printArea");
-let handle = document.getElementById("handle");
+function previewBag() {
+  const area = document.getElementById("previewArea");
+  area.innerHTML = "";
 
-/* ===== UPDATE BAG PREVIEW ===== */
-function updateBag(){
-
-  /* RESET */
+  /* ===== CREATE BAG ===== */
+  const bag = document.createElement("div");
   bag.className = "bag";
-  printArea.innerHTML = "";
-  handle.style.display = "none";
 
   /* ===== BAG TYPE ===== */
-  let bagType = document.getElementById("bagType").value;
+  const bagType = document.querySelector(
+    "input[name='bagType']:checked"
+  ).value;
 
-  if(bagType === "handle"){
-    bag.classList.add("handle");
-    handle.style.display = "block";
-  }
-  if(bagType === "stick"){
-    bag.classList.add("stick");
-    handle.style.display = "block";
-  }
-  if(bagType === "dcut"){
-    bag.classList.add("dcut");
-  }
+  bag.classList.remove("handle", "stick", "dcut");
 
-  /* ===== BAG SIZE ===== */
-  let bagSize = document.getElementById("bagSize").value;
-  if(bagSize === "small"){
-    bag.style.width = "180px";
-    bag.style.height = "230px";
-  }
-  if(bagSize === "medium"){
-    bag.style.width = "220px";
-    bag.style.height = "280px";
-  }
-  if(bagSize === "big"){
-    bag.style.width = "260px";
-    bag.style.height = "330px";
-  }
+  if (bagType === "Handle") bag.classList.add("handle");
+  if (bagType === "Stick") bag.classList.add("stick");
+  if (bagType === "D-Cut") bag.classList.add("dcut");
+
+  /* ===== SIZE (L × B SCALE) ===== */
+  const L = parseInt(document.getElementById("length").value) || 14;
+  const B = parseInt(document.getElementById("breadth").value) || 18;
+
+  bag.style.width = Math.min(260, L * 6) + "px";
+  bag.style.height = Math.min(340, B * 6) + "px";
+
+  /* ===== BAG COLOR ===== */
+  const bagColor = document.getElementById("bagColor").value;
+  bag.style.background = bagColor;
 
   /* ===== BORDER ===== */
-  let borderType = document.getElementById("borderType").value;
-  let borderColor = document.getElementById("borderColor").value;
+  const borderType = document.getElementById("borderType").value;
+  const borderColor = document.getElementById("borderColor").value;
 
-  if(borderType === "half"){
-    bag.classList.add("border-half");
-  }
-  if(borderType === "full"){
-    bag.classList.add("border-full");
-  }
+  bag.classList.remove("half-border", "full-border");
+
+  if (borderType === "half") bag.classList.add("half-border");
+  if (borderType === "full") bag.classList.add("full-border");
 
   bag.style.borderColor = borderColor;
 
-  /* ===== PRINTING OPTION ===== */
-  let printOption = document.getElementById("printOption").value;
-  let printColor = document.getElementById("printColor").value;
+  /* ===== PRINT CONTENT ===== */
+  const printText = document.createElement("div");
+  printText.className = "print";
 
-  printArea.className = "printText print-" + printColor;
+  const content = document.getElementById("printContent").value;
+  const printColor = document.getElementById("printColor").value;
 
-  if(printOption === "logo"){
-    printArea.innerHTML = `
-      <div class="logo">LOGO</div>
-    `;
+  if (content === "Logo") {
+    printText.innerText = "LOGO";
+  } else if (content === "Logo + Address") {
+    printText.innerText = "LOGO\nAddress";
+  } else {
+    printText.innerText = "LOGO\nShop Name\nAddress";
   }
 
-  if(printOption === "logoAddress"){
-    printArea.innerHTML = `
-      <div class="logo">LOGO</div>
-      <div class="address">Your Address</div>
-    `;
-  }
+  printText.style.color = printColor;
 
-  if(printOption === "full"){
-    printArea.innerHTML = `
-      <div class="logo">LOGO</div>
-      <div class="address">
-        3 STAR Carry Bags<br>
-        Your Address<br>
-        Phone: 0000000000
-      </div>
-    `;
-  }
+  /* ===== PREMIUM ANIMATION ===== */
+  bag.style.transform = "scale(0.8)";
+  bag.style.opacity = "0";
+
+  setTimeout(() => {
+    bag.style.transition = "all 0.35s ease";
+    bag.style.transform = "scale(1)";
+    bag.style.opacity = "1";
+  }, 50);
+
+  bag.appendChild(printText);
+  area.appendChild(bag);
 }
 
-/* ===== SEND TO WHATSAPP ===== */
-function sendWhatsApp(){
+/* ===== WHATSAPP SEND ===== */
+function sendWhatsApp() {
+  const msg =
+    "3 STAR Bag Customization%0A" +
+    "--------------------%0A" +
+    "Name: " + custName.value + "%0A" +
+    "Mobile: " + custMobile.value + "%0A" +
+    "Bag Type: " +
+    document.querySelector("input[name='bagType']:checked").value +
+    "%0A" +
+    "Size: " + length.value + " x " + breadth.value + "%0A" +
+    "Bag Color: " + bagColor.value + "%0A" +
+    "Print: " + printContent.value + "%0A" +
+    "Print Color: " + printColor.value + "%0A" +
+    "Border: " + borderType.value + "%0A";
 
-  let customerName = document.getElementById("customerName").value;
-  let customerMobile = document.getElementById("customerMobile").value;
-
-  let bagType = document.getElementById("bagType").value;
-  let bagSize = document.getElementById("bagSize").value;
-
-  let borderType = document.getElementById("borderType").value;
-  let borderColor = document.getElementById("borderColor").value;
-
-  let printOption = document.getElementById("printOption").value;
-  let printColor = document.getElementById("printColor").value;
-
-  let message =
-`🛍️ 3 STAR Carry Bags – Custom Order
-
-👤 Name: ${customerName}
-📞 Mobile: ${customerMobile}
-
-👜 Bag Type: ${bagType}
-📏 Size: ${bagSize}
-
-🎨 Printing: ${printOption}
-🖌️ Printing Color: ${printColor}
-
-🖼️ Border: ${borderType}
-🎯 Border Color: ${borderColor}
-
-Please confirm details.`;
-
-  let phone = "91XXXXXXXXXX"; // your WhatsApp number
-  let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
-  window.open(url, "_blank");
+  window.open("https://wa.me/918807841189?text=" + msg);
 }
 
 /* ===== BACK TO HOME ===== */
-function backToHome(){
+function goHome() {
   window.location.href = "index.html";
 }
+
