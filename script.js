@@ -37,7 +37,26 @@ function previewBag() {
     bag.classList.add("border-full");
     bag.style.borderColor = borderColorSelect.value.toLowerCase();
   }
+
+  /* PRINTING COLOR PREVIEW */
+  const printColor = document.getElementById("printColor").value;
+  const printText = document.querySelector(".printText");
+
+  printText.classList.remove("print-single","print-double","print-multi");
+
+  if (printColor === "Single Color") {
+    printText.style.color = "black";
+  }
+
+  if (printColor === "Double Color") {
+    printText.style.color = "darkred";
+  }
+
+  if (printColor === "Multi Color (Digital)") {
+    printText.style.color = "blue";
+  }
 }
+
 
 /* ===== WHATSAPP SEND ===== */
 function sendWhatsApp() {
