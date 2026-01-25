@@ -1,4 +1,4 @@
-/* ===== BASIC RESET ===== */
+/* ===== RESET ===== */
 *{
   box-sizing:border-box;
 }
@@ -41,7 +41,7 @@ header{
   color:#ff5722;
 }
 
-/* ===== FORM ELEMENTS ===== */
+/* ===== FORM ===== */
 input, select{
   width:100%;
   padding:10px;
@@ -54,7 +54,6 @@ input, select{
 label{
   display:block;
   margin-bottom:8px;
-  font-size:15px;
   cursor:pointer;
 }
 
@@ -76,6 +75,15 @@ button:hover{
   opacity:0.9;
 }
 
+/* BACK BUTTON */
+.back-btn{
+  background:#111;
+}
+.back-btn:hover{
+  background:#d4a017;
+  color:#000;
+}
+
 /* ===== BAG PREVIEW ===== */
 .bag{
   width:220px;
@@ -86,17 +94,34 @@ button:hover{
   border-radius:12px;
   transition:all 0.4s ease;
   box-shadow:0 10px 25px rgba(0,0,0,0.15);
+  padding-top:25px; /* IMPORTANT for stick/handle */
 }
 
-/* ===== PRINT TEXT ===== */
+/* ===== PRINT AREA ===== */
 .printText{
   position:absolute;
   width:100%;
   text-align:center;
   top:120px;
   font-weight:bold;
-  font-size:16px;
+  font-size:15px;
   color:#000;
+  padding:0 10px;
+}
+
+/* LOGO PREVIEW */
+.logo{
+  width:60px;
+  height:60px;
+  margin:0 auto 8px;
+  background:#ddd;
+  border-radius:6px;
+}
+
+/* ADDRESS TEXT */
+.address{
+  font-size:12px;
+  margin-top:5px;
 }
 
 /* ===== HANDLE BAG ===== */
@@ -107,19 +132,19 @@ button:hover{
   border-bottom:none;
   border-radius:60px 60px 0 0;
   position:absolute;
-  top:-40px;
+  top:-35px;
   left:50%;
   transform:translateX(-50%);
   background:transparent;
 }
 
-/* ===== STICK BAG ===== */
+/* ===== STICK BAG (FIXED) ===== */
 .bag.stick .handle{
   width:140px;
-  height:8px;
+  height:10px;
   background:#000;
   position:absolute;
-  top:-18px;
+  top:0;
   left:50%;
   transform:translateX(-50%);
   border-radius:6px;
@@ -132,7 +157,7 @@ button:hover{
   height:35px;
   background:#f4f6f8;
   position:absolute;
-  top:-1px;
+  top:0;
   left:50%;
   transform:translateX(-50%);
   border-radius:0 0 25px 25px;
@@ -140,34 +165,28 @@ button:hover{
 
 /* ===== BORDER OPTIONS ===== */
 
-/* No border = default */
-
 /* Half Border (Left + Right only) */
 .bag.border-half{
   border-left:4px solid black;
   border-right:4px solid black;
 }
 
-/* Full Border (Left + Right + Bottom) */
+/* Full Border (Left + Right + Bottom only) */
 .bag.border-full{
   border-left:4px solid black;
   border-right:4px solid black;
   border-bottom:4px solid black;
 }
-/* Printing color preview */
-.print-single{
-  color:black;
-}
 
-.print-double{
-  color:darkred;
-}
-
-.print-multi{
-  color:linear-gradient(red, blue);
-}
+/* ===== PRINTING COLOR PREVIEW ===== */
+.print-black{ color:black; }
+.print-red{ color:red; }
+.print-blue{ color:blue; }
+.print-green{ color:green; }
+.print-yellow{ color:gold; }
+.print-white{ color:white; }
 
 /* ===== ANIMATION ===== */
 .bag:hover{
-  transform:scale(1.03);
+  transform:scale(1.04);
 }
