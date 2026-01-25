@@ -20,12 +20,15 @@ function generateBag() {
   if (bagType === "Stick Bag") bag.classList.add("stick");
   if (bagType === "D-Cut Bag") bag.classList.add("dcut");
 
-  /* SIZE */
-  const L = parseInt(document.getElementById("bagLength").value) || 14;
-  const B = parseInt(document.getElementById("bagBreadth").value) || 18;
+  /* ===== SIZE (L × B IN INCH MODEL) ===== */
+const L = Number(document.getElementById("bagLength").value) || 14; // Length = height
+const B = Number(document.getElementById("bagBreadth").value) || 12; // Breadth = width
 
-  bag.style.width = Math.min(260, L * 6) + "px";
-  bag.style.height = Math.min(340, B * 6) + "px";
+const PX = 6; // 1 inch = 6px preview scale
+
+bag.style.height = Math.min(420, L * PX) + "px";
+bag.style.width  = Math.min(320, B * PX) + "px";
+
 
   /* BAG COLOR */
   const bagColor = document.getElementById("bagColor").value;
