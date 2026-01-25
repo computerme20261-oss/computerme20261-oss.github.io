@@ -2,11 +2,9 @@ function previewBag() {
   const area = document.getElementById("bagPreview");
   area.innerHTML = "";
 
-  /* ===== CREATE BAG ===== */
   const bag = document.createElement("div");
   bag.className = "bag";
 
-  /* ===== BAG TYPE ===== */
   const bagType = document.querySelector("input[name='bagType']:checked").value;
 
   bag.classList.remove("handle", "stick", "dcut");
@@ -15,18 +13,15 @@ function previewBag() {
   if (bagType === "Stick Bag") bag.classList.add("stick");
   if (bagType === "D-Cut Bag") bag.classList.add("dcut");
 
-  /* ===== SIZE (L × B SCALE) ===== */
   const L = parseInt(document.getElementById("bagLength").value) || 14;
   const B = parseInt(document.getElementById("bagBreadth").value) || 18;
 
   bag.style.width = Math.min(260, L * 6) + "px";
   bag.style.height = Math.min(340, B * 6) + "px";
 
-  /* ===== BAG COLOR ===== */
   const bagColor = document.getElementById("bagColor").value;
   bag.style.background = bagColor;
 
-  /* ===== BORDER ===== */
   const borderType = document.getElementById("borderType").value;
   const borderColor = document.getElementById("borderColor").value;
 
@@ -37,7 +32,6 @@ function previewBag() {
 
   bag.style.borderColor = borderColor;
 
-  /* ===== PRINT CONTENT ===== */
   const printText = document.createElement("div");
   printText.className = "print";
 
@@ -54,7 +48,6 @@ function previewBag() {
 
   printText.style.color = printColor;
 
-  /* ===== PREMIUM ANIMATION ===== */
   bag.style.transform = "scale(0.8)";
   bag.style.opacity = "0";
 
@@ -68,7 +61,6 @@ function previewBag() {
   area.appendChild(bag);
 }
 
-/* ===== WHATSAPP SEND ===== */
 function sendWhatsApp() {
   const custName = document.getElementById("customerName").value;
   const custMobile = document.getElementById("customerMobile").value;
@@ -90,7 +82,11 @@ function sendWhatsApp() {
   window.open("https://wa.me/918807841189?text=" + msg);
 }
 
-/* ===== BACK TO HOME ===== */
 function goHome() {
   window.location.href = "index.html";
 }
+
+/* ===== EVENT LISTENERS ===== */
+document.getElementById("previewBtn").addEventListener("click", previewBag);
+document.getElementById("sendBtn").addEventListener("click", sendWhatsApp);
+document.getElementById("backBtn").addEventListener("click", goHome);
