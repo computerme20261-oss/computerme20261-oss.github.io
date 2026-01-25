@@ -96,7 +96,6 @@ button{
 button:hover{
   transform:translateY(-2px);
   box-shadow:0 8px 20px rgba(0,0,0,0.2);
-  opacity:0.95;
 }
 
 button:active{
@@ -123,7 +122,7 @@ button:active{
   display:flex;
   justify-content:center;
   align-items:center;
-  min-height:300px;
+  min-height:320px;
   background:linear-gradient(135deg,#fafafa,#f0f0f0);
   border-radius:16px;
   padding:20px;
@@ -134,19 +133,17 @@ button:active{
 .bag{
   position:relative;
   background:#eee;
-  width:180px;
-  height:240px;
   border-radius:8px;
-  box-shadow:0 18px 35px rgba(0,0,0,0.28);
   overflow:hidden;
   transition:all 0.3s ease;
 }
 
-/* ================= HANDLE BAG (REAL D-CUT) ================= */
+/* ================= HANDLE BAG (REAL CARRY BAG) ================= */
 .bag.handle{
   border-radius:8px 8px 6px 6px;
 }
 
+/* D-CUT HANDLE */
 .bag.handle::before{
   content:"";
   position:absolute;
@@ -159,27 +156,36 @@ button:active{
   border-radius:0 0 50px 50px;
 }
 
-
-/* ================= STICK BAG (FABRIC HANDLE) ================= */
+/* ================= STICK BAG (REAL BIG SHOPPER - VERTICAL) ================= */
 .bag.stick{
   border-radius:8px;
 }
 
+/* LONG FABRIC HANDLES */
 .bag.stick::before,
 .bag.stick::after{
   content:"";
   position:absolute;
-  top:-55px;
+  top:-65px;
   width:14px;
-  height:95px;
-  background:#e0e0e0;
+  height:110px;
+  background:#dcdcdc;
   border-radius:7px;
 }
 
-.bag.stick::before{ left:22%; }
-.bag.stick::after{ right:22%; }
+.bag.stick::before{
+  left:22%;
+}
+
+.bag.stick::after{
+  right:22%;
+}
 
 /* ================= D-CUT BAG ================= */
+.bag.dcut{
+  border-radius:8px 8px 6px 6px;
+}
+
 .bag.dcut::before{
   content:"";
   position:absolute;
@@ -192,11 +198,10 @@ button:active{
   border-radius:0 0 60px 60px;
 }
 
-
 /* ================= PRINT CONTENT ================= */
 .print{
   position:absolute;
-  top:35%;
+  top:38%;
   width:100%;
   text-align:center;
   font-weight:bold;
@@ -206,7 +211,7 @@ button:active{
   letter-spacing:0.5px;
 }
 
-/* ================= BORDER OPTIONS ================= */
+/* ================= BORDER ================= */
 .full-border{
   border-left:4px solid;
   border-right:4px solid;
@@ -218,17 +223,17 @@ button:active{
   border-right:4px solid;
 }
 
-/* ================= GSM EFFECT ================= */
+/* ================= GSM VISUAL EFFECT ================= */
 .bag[data-gsm="60"]{
   box-shadow:0 10px 18px rgba(0,0,0,0.18);
 }
 
 .bag[data-gsm="90"]{
-  box-shadow:0 18px 35px rgba(0,0,0,0.28);
+  box-shadow:0 18px 32px rgba(0,0,0,0.28);
 }
 
 .bag[data-gsm="120"]{
-  box-shadow:0 26px 45px rgba(0,0,0,0.38);
+  box-shadow:0 28px 48px rgba(0,0,0,0.38);
 }
 
 /* ================= RESPONSIVE ================= */
