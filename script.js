@@ -1,110 +1,101 @@
-/* ================= ELEMENTS ================= */
+document.addEventListener("DOMContentLoaded", () => {
+
+/* ========= ELEMENTS ========= */
 const bag = document.getElementById("bag");
-const previewArea = document.getElementById("bagPreview");
 
 const bagType = document.getElementById("bagType");
 const bagColor = document.getElementById("bagColor");
-const printText = document.getElementById("printText");
-
-const bagLength = document.getElementById("bagLength"); // L (Height)
-const bagBreadth = document.getElementById("bagBreadth"); // B (Width)
-
-const gsmSelect = document.getElementById("gsm");
+const bagLength = document.getElementById("bagLength");
+const bagBreadth = document.getElementById("bagBreadth");
+const gsm = document.getElementById("gsm");
 const borderType = document.getElementById("borderType");
 const borderColor = document.getElementById("borderColor");
-
-const qtyInput = document.getElementById("quantity");
+const printText = document.getElementById("printText");
+const quantity = document.getElementById("quantity");
 
 const previewBtn = document.getElementById("previewBtn");
 const sendBtn = document.getElementById("sendBtn");
 
-/* ================= CONSTANTS ================= */
-const PX = 6; // 1 inch = 6px (preview scale)
+/* ========= SCALE ========= */
+const PX = 6; // 1 inch = 6px
 
-/* ================= INIT ================= */
-updatePreview();
-
-/* ================= EVENTS ================= */
-[
-  bagType, bagColor, printText,
-  bagLength, bagBreadth,
-  gsmSelect, borderType, borderColor,
-  qtyInput
-].forEach(el => {
-  el.addEventListener("input", updatePreview);
-});
-
-previewBtn.addEventListener("click", updatePreview);
+/* ========= EVENTS ========= */
+previewBtn.addEventListener("click", updateBag);
 sendBtn.addEventListener("click", sendWhatsApp);
 
-/* ================= MAIN PREVIEW FUNCTION ================= */
-function updatePreview(){
+/* Auto preview */
+[
+ bagType, bagColor, bagLength, bagBreadth,
+ gsm, borderType, borderColor, printText
+].forEach(el => el.addEventListener("input", updateBag));
 
-  /* ---- SIZE ---- */
+/* ========= BAG GENERATOR ========= */
+function updateBag(){
+
+  /* RESET */
+  bag.className = "bag";
+
+  /* SIZE */
   const L = Number(bagLength.value) || 14;
   const B = Number(bagBreadth.value) || 12;
 
   bag.style.height = Math.min(420, L * PX) + "px";
   bag.style.width  = Math.min(320, B * PX) + "px";
 
-  /* ---- BAG TYPE ---- */
-  bag.className = "bag"; // reset
+  /* TYPE */
   bag.classList.add(bagType.value);
 
-  /* ---- COLOR ---- */
+  /* COLOR */
   bag.style.background = bagColor.value;
 
-  /* ---- GSM ---- */
-  bag.setAttribute("data-gsm", gsmSelect.value);
+  /* GSM */
+  bag.setAttribute("data-gsm", gsm.value);
 
-  /* ---- BORDER ---- */
+  /* BORDER */
   bag.classList.remove("full-border","half-border");
+  bag.style.borderColor = borderColor.value;
 
   if(borderType.value === "full"){
     bag.classList.add("full-border");
-    bag.style.borderColor = borderColor.value;
   }
-  else if(borderType.value === "half"){
+  if(borderType.value === "half"){
     bag.classList.add("half-border");
-    bag.style.borderColor = borderColor.value;
   }
 
-  /* ---- PRINT CONTENT ---- */
-  let print = bag.querySelector(".print");
+  /* PRINT */
+  let print = bag.querySelector(".print-text");
   if(!print){
     print = document.createElement("div");
-    print.className = "print";
+    print.className = "print-text";
     bag.appendChild(print);
   }
-
   print.innerText = printText.value || "";
+
 }
 
-/* ================= WHATSAPP SEND ================= */
+/* ========= WHATSAPP ========= */
 function sendWhatsApp(){
 
-  const L = bagLength.value || 14;
-  const B = bagBreadth.value || 12;
-
   const msg =
-`🛍️ *Bag Customization Order*
+`👜 BAG ORDER
 
-Bag Type: ${bagType.value}
-Size: ${L}" (L) × ${B}" (B)
+Type: ${bagType.value}
+Size: ${bagLength.value}" x ${bagBreadth.value}"
 Color: ${bagColor.value}
-GSM: ${gsmSelect.value}
+GSM: ${gsm.value}
+Border: ${borderType.value}
+Qty: ${quantity.value || "-"}
 
 Print: ${printText.value || "No Print"}
+`;
 
-Border: ${borderType.value}
-Border Color: ${borderColor.value}
-
-Quantity: ${qtyInput.value || "Not entered"}
-
-Please confirm price & delivery.`;
-
-  const phone = "91XXXXXXXXXX"; // replace with your number
-  const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(msg);
-
-  window.open(url, "_blank");
+  const phone = "91XXXXXXXXXX"; // replace
+  window.open(
+    "https://wa.me/" + phone + "?text=" + encodeURIComponent(msg),
+    "_blank"
+  );
 }
+
+updateBag(); // first load
+
+});
