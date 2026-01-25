@@ -5,10 +5,10 @@
   <title>Customize Carry Bag | 3 STAR</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- LINK CSS -->
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- LINK JS -->
+  <!-- JS (IMPORTANT: defer) -->
   <script src="script.js" defer></script>
 </head>
 
@@ -32,8 +32,9 @@
   <!-- BAG TYPE -->
   <section>
     <h3>Bag Type</h3>
+
     <label>
-      <input type="radio" name="bagType" value="Handle Bag">
+      <input type="radio" name="bagType" value="Handle Bag" checked>
       Handle Bag
     </label>
 
@@ -51,14 +52,6 @@
   <!-- BAG SIZE -->
   <section>
     <h3>Bag Size</h3>
-
-    <label>Preset Size</label>
-    <select id="presetSize">
-      <option value="">Select Size</option>
-      <option value="Small (10x12)">Small (10 × 12)</option>
-      <option value="Medium (14x18)">Medium (14 × 18)</option>
-      <option value="Big (18x24)">Big (18 × 24)</option>
-    </select>
 
     <label>Custom Size (L × B in inches)</label>
     <input type="number" id="bagLength" placeholder="Length">
@@ -85,8 +78,6 @@
       <option>Blue</option>
       <option>Green</option>
       <option>Yellow</option>
-      <option>Light Shade</option>
-      <option>Dark Shade</option>
     </select>
   </section>
 
@@ -101,34 +92,13 @@
       <option>Full Details (Logo + Shop + Address)</option>
     </select>
 
-    <label>Printing Color</label>
+    <label>Print Color</label>
     <select id="printColor">
       <option>Black</option>
       <option>Red</option>
       <option>Blue</option>
       <option>Green</option>
       <option>Yellow</option>
-      <option>Multi Color (Digital)</option>
-    </select>
-  </section>
-
-  <!-- GSM -->
-  <section>
-    <h3>GSM</h3>
-    <select id="gsm">
-      <option>60</option>
-      <option>65</option>
-      <option>70</option>
-      <option>75</option>
-      <option>80</option>
-      <option>85</option>
-      <option>90</option>
-      <option>95</option>
-      <option>100</option>
-      <option>105</option>
-      <option>110</option>
-      <option>115</option>
-      <option>120</option>
     </select>
   </section>
 
@@ -146,11 +116,9 @@
     <label>Border Color</label>
     <select id="borderColor">
       <option>Black</option>
-      <option>White</option>
       <option>Red</option>
       <option>Blue</option>
       <option>Green</option>
-      <option>Yellow</option>
     </select>
   </section>
 
@@ -160,12 +128,10 @@
     <input type="number" id="quantity" placeholder="Enter quantity">
   </section>
 
-  <!-- PREVIEW AREA -->
+  <!-- PREVIEW -->
   <section>
     <h3>Bag Preview</h3>
-    <div id="bagPreview">
-      <!-- Bag shape will be generated here -->
-    </div>
+    <div id="bagPreview"></div>
   </section>
 
   <!-- BUTTONS -->
