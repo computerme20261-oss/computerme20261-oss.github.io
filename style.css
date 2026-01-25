@@ -144,20 +144,21 @@ button:active{
 
 /* ================= HANDLE BAG (REAL D-CUT) ================= */
 .bag.handle{
-  border-radius:10px 10px 6px 6px;
+  border-radius:8px 8px 6px 6px;
 }
 
 .bag.handle::before{
   content:"";
   position:absolute;
-  top:8px;
+  top:10px;
   left:50%;
   transform:translateX(-50%);
-  width:45%;
-  height:22px;
+  width:48%;
+  height:14%;
   background:#f4f6f8;
-  border-radius:0 0 40px 40px;
+  border-radius:0 0 50px 50px;
 }
+
 
 /* ================= STICK BAG (FABRIC HANDLE) ================= */
 .bag.stick{
@@ -168,37 +169,29 @@ button:active{
 .bag.stick::after{
   content:"";
   position:absolute;
-  top:-45px;
+  top:-55px;
   width:14px;
-  height:75px;
-  background:#d9d9d9;
+  height:95px;
+  background:#e0e0e0;
   border-radius:7px;
 }
 
-.bag.stick::before{
-  left:25%;
-}
-
-.bag.stick::after{
-  right:25%;
-}
+.bag.stick::before{ left:22%; }
+.bag.stick::after{ right:22%; }
 
 /* ================= D-CUT BAG ================= */
-.bag.dcut{
-  border-radius:10px 10px 6px 6px;
-}
-
 .bag.dcut::before{
   content:"";
   position:absolute;
-  top:10px;
+  top:12px;
   left:50%;
   transform:translateX(-50%);
-  width:50%;
-  height:28px;
+  width:55%;
+  height:18%;
   background:#f4f6f8;
-  border-radius:0 0 50px 50px;
+  border-radius:0 0 60px 60px;
 }
+
 
 /* ================= PRINT CONTENT ================= */
 .print{
