@@ -30,7 +30,7 @@ const L = Number(bagLength.value) || 25;   // Length / Height (inch)
 const B = Number(bagBreadth.value) || 15;  // Breadth / Width (inch)
 
 // ⭐ INCREASE THIS NUMBER TO MAKE BAG BIGGER
-const PX = 12;   // try 14 if you want EXTRA BIG
+const PX = 16;   // try 14 if you want EXTRA BIG
 
 bag.style.height = Math.min(750, L * PX) + "px";
 bag.style.width  = Math.min(500, B * PX) + "px";
