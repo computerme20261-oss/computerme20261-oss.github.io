@@ -202,8 +202,25 @@ button{
   border-radius:6px;
 }
 
-.stick-bag .stick-left{ left:60px; }
-.stick-bag .stick-right{ right:60px; }
+/* ===== REAL BIG SHOPPER STICK ===== */
+.stick-left,
+.stick-right{
+  position:absolute;
+  top:12px;              /* top fold kulla */
+  width:7px;
+  height:22px;           /* 🔥 short stick (real look) */
+  background:#222;
+  border-radius:6px;
+}
+
+.stick-left{
+  left:28%;
+}
+
+.stick-right{
+  right:28%;
+}
+
 
 /* =====================================================
    D-CUT BAG
