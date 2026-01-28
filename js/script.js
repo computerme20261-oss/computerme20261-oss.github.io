@@ -4,95 +4,85 @@ document.addEventListener("DOMContentLoaded", () => {
   const sendBtn    = document.getElementById("sendBtn");
   const previewBox = document.getElementById("bagPreview");
 
-  const PX = 6; // 1 inch = 6px (preview scale)
-
   previewBtn.addEventListener("click", previewBag);
   sendBtn.addEventListener("click", sendWhatsApp);
 
   /* ================= PREVIEW BAG ================= */
-function previewBag(){
+  function previewBag(){
 
-  const previewBox = document.getElementById("bagPreview");
+    previewBox.innerHTML = ""; // clear old bag
 
-  const bag = document.createElement("div");
-  bag.className = "bag";
+    const bag = document.createElement("div");
+    bag.className = "bag";
 
-  /* ===== BAG TYPE ===== */
-  const bagType =
-    document.querySelector("input[name='bagType']:checked").value;
+    /* ===== BAG TYPE ===== */
+    const bagType =
+      document.querySelector("input[name='bagType']:checked").value;
 
-  // remove old classes
-  bag.classList.remove("handle-bag","stick-bag","dcut-bag");
+    bag.classList.remove("handle-bag","stick-bag","dcut-bag");
 
-  if(bagType === "Handle"){
-    bag.classList.add("handle-bag");
-  }
+    if(bagType === "Handle"){
+      bag.classList.add("handle-bag");
+    }
+    else if(bagType === "Stick"){
+      bag.classList.add("stick-bag");
 
-  else if(bagType === "Stick"){
-    bag.classList.add("stick-bag");
+      // finger cut for big shopper
+      const finger = document.createElement("div");
+      finger.className = "finger-cut";
+      bag.appendChild(finger);
+    }
+    else{
+      bag.classList.add("dcut-bag");
+    }
 
-   else if(bagType === "Stick"){
-  bag.classList.add("stick-bag");
+    /* ===== SIZE (INCH → PIXEL) ===== */
+    const bagLength  = document.getElementById("bagLength");
+    const bagBreadth = document.getElementById("bagBreadth");
 
-  // ✅ ONLY FINGER CUT (rod CSS-la irukkum)
-  const finger = document.createElement("div");
-  finger.className = "finger-cut";
-  bag.appendChild(finger);
-}
+    const L = Number(bagLength.value) || 25;
+    const B = Number(bagBreadth.value) || 15;
 
-  }
+    const PX = 16; // preview scale
 
-  else{
-    bag.classList.add("dcut-bag");
-  }
+    bag.style.height = Math.min(750, L * PX) + "px";
+    bag.style.width  = Math.min(500, B * PX) + "px";
 
-   // ===== SIZE (INCH → PIXEL) =====
-const L = Number(bagLength.value) || 25;   // Length / Height (inch)
-const B = Number(bagBreadth.value) || 15;  // Breadth / Width (inch)
-
-// ⭐ INCREASE THIS NUMBER TO MAKE BAG BIGGER
-const PX = 16;   // try 14 if you want EXTRA BIG
-
-bag.style.height = Math.min(750, L * PX) + "px";
-bag.style.width  = Math.min(500, B * PX) + "px";
-
-
-    /* COLOR */
+    /* ===== COLOR ===== */
     bag.style.background = document.getElementById("bagColor").value;
 
-    /* GSM */
+    /* ===== GSM ===== */
     const gsm = document.getElementById("gsm").value;
     bag.setAttribute("data-gsm", gsm);
 
-    /* BORDER */
-    bag.style.borderColor = document.getElementById("borderColor").value;
-    bag.classList.remove("full-border","half-border");
+    /* ===== BORDER ===== */
+    const borderType  = document.getElementById("borderType").value;
+    const borderColor = document.getElementById("borderColor").value;
 
-    const borderType = document.getElementById("borderType").value;
+    bag.classList.remove("full-border","half-border");
+    bag.style.borderColor = borderColor;
+
     if(borderType === "full") bag.classList.add("full-border");
     if(borderType === "half") bag.classList.add("half-border");
 
-    /* PRINT CONTENT */
+    /* ===== PRINT ===== */
     const print = document.createElement("div");
     print.className = "print-text";
 
     const content = document.getElementById("printContent").value;
-    if(content === "Logo Only") print.innerText = "LOGO";
-    else if(content === "Logo + Address") print.innerText = "LOGO\nADDRESS";
-    else print.innerText = "LOGO\nSHOP NAME\nADDRESS";
+
+    if(content === "Logo Only"){
+      print.innerText = "LOGO";
+    }
+    else if(content === "Logo + Address"){
+      print.innerText = "LOGO\nADDRESS";
+    }
+    else{
+      print.innerText = "LOGO\nSHOP NAME\nADDRESS";
+    }
 
     print.style.color = document.getElementById("printColor").value;
     bag.appendChild(print);
-
-    /* PREMIUM ANIMATION */
-    bag.style.transform = "scale(0.85)";
-    bag.style.opacity = "0";
-
-    setTimeout(() => {
-      bag.style.transition = "all 0.35s ease";
-      bag.style.transform = "scale(1)";
-      bag.style.opacity = "1";
-    }, 50);
 
     previewBox.appendChild(bag);
   }
@@ -107,17 +97,15 @@ Name: ${customerName.value}
 Mobile: ${customerMobile.value}
 
 Bag Type: ${document.querySelector("input[name='bagType']:checked").value}
-Size (L × B): ${bagLength.value} × ${bagBreadth.value} inch
+Size: ${bagLength.value} × ${bagBreadth.value} inch
 Material: ${material.value}
 Color: ${bagColor.value}
 
 Print: ${printContent.value}
 Print Color: ${printColor.value}
-
 GSM: ${gsm.value}
-Border: ${borderType.value}
-Border Color: ${borderColor.value}
 
+Border: ${borderType.value}
 Quantity: ${quantity.value}
 `;
 
@@ -129,7 +117,7 @@ Quantity: ${quantity.value}
 
 });
 
-/* ================= BACK TO HOME ================= */
+/* ================= BACK ================= */
 function goHome(){
   window.location.href = "index.html";
 }
