@@ -202,23 +202,47 @@ button{
   border-radius:6px;
 }
 
-/* ===== REAL BIG SHOPPER STICK ===== */
-.stick-left,
-.stick-right{
-  position:absolute;
-  top:12px;              /* top fold kulla */
-  width:7px;
-  height:22px;           /* 🔥 short stick (real look) */
-  background:#222;
+/* ===== REAL STICK BAG – PHOTO MATCH ===== */
+.stick-bag{
+  position:relative;
   border-radius:6px;
+  overflow:hidden;
 }
 
-.stick-left{
-  left:28%;
+/* TOP FOLD */
+.stick-bag::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:42px;
+  background:rgba(0,0,0,0.08);
 }
 
-.stick-right{
-  right:28%;
+/* HORIZONTAL STICK ROD */
+.stick-bag::after{
+  content:"";
+  position:absolute;
+  top:14px;
+  left:50%;
+  transform:translateX(-50%);
+  width:120px;          /* stick length */
+  height:10px;          /* stick thickness */
+  background:#222;
+  border-radius:8px;
+}
+
+/* FINGER CUT */
+.stick-bag .finger-cut{
+  position:absolute;
+  top:26px;
+  left:50%;
+  transform:translateX(-50%);
+  width:55px;
+  height:18px;
+  background:#f2f4f7;
+  border-radius:3px;
 }
 
 
