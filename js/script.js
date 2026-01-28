@@ -90,8 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ================= WHATSAPP ================= */
   function sendWhatsApp(){
 
-    const msg =
-``🌐🛍️ *3 STAR BAG ORDER*
+    const msg = 🌐🛍️ 3 STAR BAG ORDER
 
 Name: ${customerName.value}
 Mobile: ${customerMobile.value}
